@@ -1,0 +1,14 @@
+{%extends 'shared/layout.html'%}
+{%block body%}
+<h1>You order</h1>
+<ul>
+    
+    <li>
+        You order :{{order.id}}:{{order.descriptions}}:{{order.price}}
+    </li>
+     <div>
+         <button><a href="{% url 'beginen' %}">Home</a></button>
+     </div>
+     
+</ul>
+{%endblock%}

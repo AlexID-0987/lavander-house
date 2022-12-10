@@ -1,0 +1,21 @@
+.im{
+    width: 100px;
+    height: 100px;
+    margin: auto;
+}
+.im img{
+    width: 100%;
+    
+}
+.card{
+    width: 200px;
+    height: 300px;
+    border: 1px solid black;
+    text-align: center;
+    margin: 2px;
+    
+}
+.global{
+    display: flex;
+    flex-wrap: wrap;
+}

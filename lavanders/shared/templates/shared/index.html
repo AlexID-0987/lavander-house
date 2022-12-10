@@ -1,8 +1,25 @@
 {%extends 'shared/layout.html'%}
-
+{%load static%}
 {%block body%}
 <h1>Lavander shop</h1>
 <div>
-
+    <img src="{%static '/images/lav.jpg'%}">
+</div>
+<div class="global">
+    {%for pr in products%}
+    <div class="card">
+        <h1>{{pr.id}}</h1>
+        <div class="im">
+            <img src="{{pr.photo}}">
+        </div>
+        <h1>{{pr.price}}</h1>
+        <h1>{{pr.descriptions}}</h1>
+        <div>
+            
+               <a href="{% url 'order'  pr.id%}">Pers</a>
+            
+        </div>
+    </div>
+    {%endfor%}
 </div>
 {%endblock%}
