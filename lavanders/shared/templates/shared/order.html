@@ -5,10 +5,15 @@
     
     <li>
         You order :{{order.id}}:{{order.descriptions}}:{{order.price}}
+        <div class="im">
+            <img src="{{order.photo}}">
+        </div>
     </li>
      <div>
          <button><a href="{% url 'beginen' %}">Home</a></button>
+         <button><a href="{% url 'buy' order.id%}">Buy</a></button>
      </div>
      
 </ul>
+
 {%endblock%}
