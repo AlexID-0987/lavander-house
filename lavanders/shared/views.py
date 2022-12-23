@@ -6,6 +6,9 @@ class NewForms(forms.Form):
     name=forms.CharField(label='Name')
     email=forms.CharField(label='Email')
     
+class Quantity(forms.Form):
+    number=forms.IntegerField()
+
 
 # Create your views here.
 def index(request):
@@ -21,7 +24,7 @@ def order(request, prod_id):
 
 def buy(request, buy_id):
     ses=None
-    quantity=1
+    price=0
     if 'order_products' in request.session:
         if buy_id in request.session['order_products']:
             request.session['order_products'].remove(buy_id)
@@ -33,10 +36,25 @@ def buy(request, buy_id):
         
     prod=Products.objects.get(pk=buy_id)
     request.session.modified=True
+    
+    def  cr():
+       form=Quantity(request.POST)
+       return form
+        
+
+    
+    
+    
+            
+        
     return render(request, 'shared/buy.html',{
         'find':ses,
         'buy_id':buy_id,
         'buy_form':NewForms(),
         'prod':prod,
-        'quantity':quantity
+        'quant':Quantity(),
+        'form':cr
+        
+        
+        
     })

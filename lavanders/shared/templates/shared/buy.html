@@ -1,9 +1,7 @@
 {%extends 'shared/layout.html'%}
 {%block body%}
 <h1>Buy</h1>
-<form  method="post" action="{% url 'buy' }">
-    {%csrf_token%}
-    {{buy_form}}
+
     <div class="container md-3">
     <table class='table table-success table-striped'>
         <thead>
@@ -12,7 +10,7 @@
                 <th>Products</th>
                 <th>Price</th>
                 <th>Quantity</th>
-                <th>Locale Summa</th>
+                <th>Summa</th>
             </tr>
         </thead>
        <tbody>
@@ -22,17 +20,29 @@
                 <td>{{products.descriptions}}</td>
                 <td>{{products.price}}</td>
                 <td>
-                    <input type='number' value='{{quantity}}' name='quantity'>
+                    <form method="post">
+                        {%csrf_token%}
+                    {{quant}}
+                    <td>
+                    <input type="submit">
+                    </td> 
+                    </form> 
                 </td>
-                <td>(2*2)</td>
+                <td>
+                    {{form}}
+                </td>
+                
             </tr>
         {%endfor%}
         </tbody>
         
     </table>
     </div>
-    <input type="submit">
-</form>
+    <form  method="post" action="{% url 'buy' }">
+        {%csrf_token%}
+        {{buy_form}}
+        <input type="submit">
+    </form>
 <div>
     <button><a href="{% url 'order' buy_id %}">Home</a></button>
 </div>
