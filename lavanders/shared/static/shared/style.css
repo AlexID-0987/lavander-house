@@ -19,3 +19,6 @@
     display: flex;
     flex-wrap: wrap;
 }
+.myform div{
+    margin-right: auto;
+}

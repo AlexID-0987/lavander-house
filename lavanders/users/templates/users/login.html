@@ -1,0 +1,16 @@
+{%extends 'users/layout.html'%}
+{%block body%}
+ {%if message%}
+    <div>{{message}}</div>
+    {%for i in us%}
+    <h1>{{i.id}}:{{i.username}}</h1>
+    {%endfor%}
+ {%endif%}
+<form method="POST" action="{% url 'login'%}">
+{%csrf_token%}
+<input type="text" name="username" placeholder="Enter you name">
+<input type="password" name="password" placeholder="Password">
+<input type="submit" value="Login">
+</form>
+
+{%endblock%}

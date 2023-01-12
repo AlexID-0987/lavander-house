@@ -1,44 +1,32 @@
 {%extends 'shared/layout.html'%}
 {%block body%}
 <h1>Buy</h1>
-
-    <div class="container md-3">
-    <table class='table table-success table-striped'>
-        <thead>
+<div class="container md-2">
+<table class='table table-success table-striped'>
+    <thead>
             <tr>
+                <th>IdUser</th>
                 <th>ID</th>
                 <th>Products</th>
                 <th>Price</th>
-                <th>Quantity</th>
-                <th>Summa</th>
+                <th>Buy</th>
             </tr>
         </thead>
        <tbody>
-        {%for products in find%}
+            {%for prod in find%}
             <tr>
-                <td>{{products.id}}</td>
-                <td>{{products.descriptions}}</td>
-                <td>{{products.price}}</td>
-                <td>
-                    <form method="post">
-                        {%csrf_token%}
-                    {{quant}}
-                    <td>
-                    <input type="submit">
-                    </td> 
-                    </form> 
-                </td>
-                <td>
-                    {{form}}
-                </td>
-                
+                <td>{{request.user.id}}:{{request.user.username}}</td>
+                <td>{{prod.id}}</td>
+                <td>{{prod.descriptions}}</td>
+                <td>{{prod.price}}</td>
+                <td><button><a href="{%url 'buyProd' prod.id%}">Buy</a></button></td>
             </tr>
-        {%endfor%}
+            {%endfor%}
         </tbody>
-        
-    </table>
-    </div>
-    <form  method="post" action="{% url 'buy' }">
+</table>
+
+</div>
+    <form  method="post" action="{% url 'buy'}">
         {%csrf_token%}
         {{buy_form}}
         <input type="submit">

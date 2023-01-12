@@ -1,0 +1,12 @@
+{%extends 'users/layout.html'%}
+{%block body%}
+
+<form action="{% url 'register'%}" method="POST">
+    {%csrf_token%}
+    {{myRegister}}
+<input type="submit">
+</form>
+
+<a href="{% url 'logout' %}">Log Out</a>
+<button><a href="{% url 'beginen' %}">Home</a></button>
+{%endblock%}
