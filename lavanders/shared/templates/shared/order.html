@@ -12,12 +12,14 @@
      <div>
         {%if user.is_authenticated%}
         <a href="{% url 'logout' %}">Log Out</a>
+        <button><a href="{% url 'beginen' %}">Home</a></button>
+        <button><a href="{% url 'buy' order.id%}">Buy</a></button>
         {%else%}
         <button><a href="{% url 'register' %}">Register</a></button>
         <button><a href="{% url 'login' %}">Login</a></button>
+        <button><a href="{% url 'beginen' %}">Home</a></button>
         {%endif%}
-         <button><a href="{% url 'beginen' %}">Home</a></button>
-         <button><a href="{% url 'buy' order.id%}">Buy</a></button>
+         
      </div>
      
 </ul>

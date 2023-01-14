@@ -22,10 +22,12 @@ def login_view(request):
             login (request, user)
             return HttpResponseRedirect(reverse('index'))
         else:
+           
             return render(request, 'users/login.html',{
                 'message':'You not auhtenticate.',
                 'us':userItem
             })
+                
         
     return render(request, 'users/login.html')
 
